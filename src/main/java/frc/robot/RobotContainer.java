@@ -54,8 +54,6 @@ public class RobotContainer {
 		
 		configureBindings();
 		configureAuto();
-
-		CameraServer.startAutomaticCapture();
 	}
 
 	/**

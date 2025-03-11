@@ -128,31 +128,30 @@ public final class Constants {
 		public static final int PCM_ID = 0;
 	}
 
-	public static class intake{
-		public static final int intake_front = 15;
-		public static final int intake_back = 16;
-		public static final double speed_front = -.25;
-		public static final double speed_back = -.25;
-		public static final int stator_current_limit = 80;
-		public static final int supply_current_limit = 40;
-		public static final boolean stator_limit_enable = true;
-		public static final boolean supply_limit_enable = true;
-		public static final double note_current_threshold = 35;
-		public static final double note_time_threshold = .25;
+	public static class Intake{
+		public static final int intake_left = 16;
+		public static final int intake_right = 17;
+		public static final double left_speed = .25;
+		public static final double right_speed = -.25;
 	}
 
-	public static class ArmConstants {
-		public static final int kArmRightMotorPort = 17;
-		public static final int kArmLeftMotorPort = 18;
+	public static class Arm{
+		public static final int arm_left = 18;
+		public static final int arm_right = 19;
+		public static final double left_speed = .1;
+		public static final double right_speed = -.1;
 
-		public static final boolean kInverseArmRightMotor = true;
-		public static final boolean kInverseArmLeftMotor = true;
+	}
 
-		public static final int kMotorSmartCurrentLimit = 40;
+	public static class Elevator  {
+		public static final int elevator_motor = 20;
+		
 
 		public static final double kEncoderConversionFactor = 360;
 		public static final double kEncoderZeroOffest = 244.4518089;
 
+
+		//Update All this to elevator constants
 		public static final double kPArm = 0.014;
 		public static final double kIArm = 0.000000001;
 		public static final double kDArm = 0.001;

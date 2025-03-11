@@ -4,11 +4,14 @@
 
 package frc.robot;
 
-import frc.robot.Constants.ArmConstants;
 import frc.robot.Constants.ControllerConstants;
 import frc.robot.Constants.OperatorConstants;
 import frc.robot.commands.SwerveTeleOpCommand;
 import frc.robot.subsystems.SwerveSubsystem;
+import frc.robot.subsystems.IntakeSubsystem;
+import frc.robot.subsystems.ArmSubsystem;
+import frc.robot.commands.IntakeCommand;
+import frc.robot.commands.ArmCommand;
 import com.pathplanner.lib.auto.AutoBuilder;
 import com.pathplanner.lib.auto.NamedCommands;
 import com.pathplanner.lib.commands.PathPlannerAuto;
@@ -33,7 +36,9 @@ import edu.wpi.first.wpilibj2.command.button.Trigger;
  * subsystems, commands, and trigger mappings) should be declared here.
  */
 public class RobotContainer {
-	// The robot's subsystems and commands are defined here...
+	
+	private final IntakeSubsystem intakeSubsystem = new IntakeSubsystem();
+	private final ArmSubsystem armSubsystem = new ArmSubsystem();
 	private final SwerveSubsystem swerveSubsystem = new SwerveSubsystem();
 	// Replace with CommandPS4Controller or CommandJoystick if needed
 	private final CommandXboxController controller =
@@ -73,6 +78,8 @@ public class RobotContainer {
 
 		controller.a().onTrue(Commands.runOnce(swerveSubsystem::zeroHeading).andThen(Commands.runOnce(swerveSubsystem::useGyroHeading)));
 		controller.rightBumper().onTrue(Commands.runOnce(swerveSubsystem::toggleSlowMode));
+		controller.leftTrigger().whileTrue(new IntakeCommand(intakeSubsystem));
+		controller.rightTrigger().whileTrue(new ArmCommand(armSubsystem));
 
 
 

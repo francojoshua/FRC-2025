@@ -131,40 +131,32 @@ public final class Constants {
 	public static class Intake{
 		public static final int intake_left = 16;
 		public static final int intake_right = 17;
-		public static final double left_speed = .25;
-		public static final double right_speed = -.25;
+		public static final double left_speed = .25; //VERIFY
+		public static final double right_speed = -.25; //VERIFY
 	}
 
 	public static class Arm{
 		public static final int arm_left = 18;
 		public static final int arm_right = 19;
-		public static final double left_speed = .1;
-		public static final double right_speed = -.1;
+		public static final double left_speed = .1; //VERIFY
+		public static final double right_speed = -.1; //VERIFY
 
 	}
 
 	public static class Elevator  {
 		public static final int elevator_motor = 20;
-		
+		public static double speed = .25; //VERIFY
+		public static final double KP = 0;//VERIFY
+		public static final double KD = 0;//VERIFY
+		public static final double KF = 0;//VERIFY
+		public static final double Kmin = 100;//VDERIFY
+		public static final double kmax = 500;//VERIFY
+		public static final double level_4= 450;//VERIFY
+		public static final double level_3 = 300;//VERIFY
+		public static final double level_2 = 200;//VERIFY
+		public static final double level_1 = 100;//VERIFY
+		public static final double positionConversionFactor = 1;//Calcualte actual
 
-		public static final double kEncoderConversionFactor = 360;
-		public static final double kEncoderZeroOffest = 244.4518089;
-
-
-		//Update All this to elevator constants
-		public static final double kPArm = 0.014;
-		public static final double kIArm = 0.000000001;
-		public static final double kDArm = 0.001;
-
-		public static final double kFFArm = 0.000015;
-
-		public static final NumberRange kPercentOutputRange = new NumberRange(-0.35, 0.35);
-
-		public static final boolean kIsPIDWrappingEnabled = true;
-		public static final NumberRange kPIDWrappingRange = new NumberRange(0.0, 360.0);
-
-		public static final double kArmUpPosition = 160.0;
-		public static final double kArmDownPosition = 6.5;
 	}
 
 	public record NumberRange(double min, double max) {};

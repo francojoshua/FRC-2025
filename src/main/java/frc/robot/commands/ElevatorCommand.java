@@ -1,21 +1,23 @@
+
+
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.Command;
-import frc.robot.subsystems.ArmSubsystem;
+import frc.robot.subsystems.ElevatorSubsystem;
 
-public class ArmCommand extends Command {
-    private final ArmSubsystem armSubsystem_instance;
+public class ElevatorCommand extends Command {
+  private final ElevatorSubsystem elevatorSubsystem_instance;
 
-  public ArmCommand(ArmSubsystem armSubsystem) {
-    armSubsystem_instance = armSubsystem;
-    addRequirements(armSubsystem_instance);
 
+  public ElevatorCommand(ElevatorSubsystem elevatorSubsystem) {
+    elevatorSubsystem_instance = elevatorSubsystem;
+    addRequirements(elevatorSubsystem_instance);
   }
 
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-      armSubsystem_instance.set_speed();
+    elevatorSubsystem_instance.set_speed();
   }
 
   // Called every time the scheduler runs while the command is scheduled.
@@ -25,7 +27,7 @@ public class ArmCommand extends Command {
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-      armSubsystem_instance.stop();
+    elevatorSubsystem_instance.stop();
   }
 
   // Returns true when the command should end.

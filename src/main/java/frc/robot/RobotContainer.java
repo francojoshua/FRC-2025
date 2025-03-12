@@ -12,6 +12,9 @@ import frc.robot.subsystems.IntakeSubsystem;
 import frc.robot.subsystems.ArmSubsystem;
 import frc.robot.commands.IntakeCommand;
 import frc.robot.commands.ArmCommand;
+import frc.robot.commands.ElevatorCommand;
+import frc.robot.subsystems.ElevatorSubsystem;
+
 import com.pathplanner.lib.auto.AutoBuilder;
 import com.pathplanner.lib.auto.NamedCommands;
 import com.pathplanner.lib.commands.PathPlannerAuto;
@@ -40,6 +43,7 @@ public class RobotContainer {
 	private final IntakeSubsystem intakeSubsystem = new IntakeSubsystem();
 	private final ArmSubsystem armSubsystem = new ArmSubsystem();
 	private final SwerveSubsystem swerveSubsystem = new SwerveSubsystem();
+	private final ElevatorSubsystem elevatorSubsytem = new ElevatorSubsystem();
 	// Replace with CommandPS4Controller or CommandJoystick if needed
 	private final CommandXboxController controller =
 			new CommandXboxController(OperatorConstants.kDriverControllerPort);
@@ -76,10 +80,11 @@ public class RobotContainer {
 		// .onTrue(new ExampleCommand(m_exampleSubsystem));
 		
 
-		controller.a().onTrue(Commands.runOnce(swerveSubsystem::zeroHeading).andThen(Commands.runOnce(swerveSubsystem::useGyroHeading)));
+		controller.x().onTrue(Commands.runOnce(swerveSubsystem::zeroHeading).andThen(Commands.runOnce(swerveSubsystem::useGyroHeading)));
 		controller.rightBumper().onTrue(Commands.runOnce(swerveSubsystem::toggleSlowMode));
 		controller.leftTrigger().whileTrue(new IntakeCommand(intakeSubsystem));
 		controller.rightTrigger().whileTrue(new ArmCommand(armSubsystem));
+		
 
 
 

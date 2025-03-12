@@ -5,9 +5,7 @@ package frc.robot.subsystems;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import com.revrobotics.spark.SparkFlex;
 import com.revrobotics.spark.SparkLowLevel.MotorType;
-import com.revrobotics.spark.config.SparkBaseConfig;
 import frc.robot.Constants.Arm;
-import frc.robot.Constants.Intake;;
 
 public class ArmSubsystem extends SubsystemBase {
   private final SparkFlex left;

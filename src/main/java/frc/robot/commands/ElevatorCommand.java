@@ -17,12 +17,14 @@ public class ElevatorCommand extends Command {
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    elevatorSubsystem_instance.set_speed();
+    
   }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
-  public void execute() {}
+  public void execute() {
+    elevatorSubsystem_instance.setLevel();
+  }
 
   // Called once the command ends or is interrupted.
   @Override

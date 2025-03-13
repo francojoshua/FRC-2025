@@ -5,6 +5,7 @@
 package frc.robot;
 
 import frc.robot.Constants.ControllerConstants;
+import frc.robot.Constants.Elevator;
 import frc.robot.Constants.OperatorConstants;
 import frc.robot.commands.SwerveTeleOpCommand;
 import frc.robot.subsystems.SwerveSubsystem;
@@ -27,6 +28,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.Commands;
 import edu.wpi.first.wpilibj2.command.InstantCommand;
+import edu.wpi.first.wpilibj2.command.RunCommand;
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 import edu.wpi.first.wpilibj2.command.WaitCommand;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
@@ -55,10 +57,15 @@ public class RobotContainer {
 	/** The container for the robot. Contains subsystems, OI devices, and commands. */
 	public RobotContainer() {
 		// Configure the trigger bindings
+	
+		
+	
 		swerveSubsystem.setDefaultCommand(
 				new SwerveTeleOpCommand(swerveSubsystem, () -> controller.getLeftY(),
-						() -> controller.getLeftX(), () -> controller.getRightX(), () -> joystick.getRawButton(ControllerConstants.LY_ID)));
+						() -> controller.getLeftX(), () -> controller.getRightX(), () -> joystick.getRawButton(ControllerConstants.LY_ID))
+		);
 
+		elevatorSubsytem.setDefaultCommand(new ElevatorCommand(elevatorSubsytem));
 
 		
 		configureBindings();
@@ -84,8 +91,12 @@ public class RobotContainer {
 		controller.rightBumper().onTrue(Commands.runOnce(swerveSubsystem::toggleSlowMode));
 		controller.leftTrigger().whileTrue(new IntakeCommand(intakeSubsystem));
 		controller.rightTrigger().whileTrue(new ArmCommand(armSubsystem));
-		
-
+		controller.a().onTrue(elevatorSubsytem.change_setpoint(Elevator.level_1));
+		controller.b().onTrue(elevatorSubsytem.change_setpoint(Elevator.level_2));
+		controller.y().onTrue(elevatorSubsytem.change_setpoint(Elevator.level_3));
+		controller.leftBumper().onTrue(elevatorSubsytem.change_setpoint(Elevator.height_minmum));
+		controller.povDown().onTrue(elevatorSubsytem.decrement_setpoint());
+		controller.povUp().onTrue(elevatorSubsytem.increment_setpoint());
 
 
 		// Schedule `exampleMethodCommand` when the Xbox controller's B button is pressed,

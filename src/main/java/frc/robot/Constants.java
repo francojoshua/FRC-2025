@@ -145,18 +145,19 @@ public final class Constants {
 
 	public static class Elevator  {
 		public static final int elevator_motor = 20;
-		public static double speed = .25; //VERIFY
 		public static final double KP = 0;//VERIFY
 		public static final double KD = 0;//VERIFY
 		public static final double KF = 0;//VERIFY
-		public static final double Kmin = 100;//VDERIFY
-		public static final double kmax = 500;//VERIFY
-		public static final double level_4= 450;//VERIFY
+		public static final double output_minimum = .05;//VDERIFY
+		public static final double output_maximum = .5;//VERIFY
 		public static final double level_3 = 300;//VERIFY
 		public static final double level_2 = 200;//VERIFY
 		public static final double level_1 = 100;//VERIFY
-		public static final double positionConversionFactor = 1;//Calcualte actual
-
+		public static final double level_0 = 50;//VERIFY
+		public static final double positionConversionFactor = 1;
+		public static final double height_maximum = 350;
+		public static final double height_minmum = 10;
+		public static final double increment_decrement = 10;
 	}
 
 	public record NumberRange(double min, double max) {};

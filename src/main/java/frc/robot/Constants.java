@@ -131,8 +131,10 @@ public final class Constants {
 	public static class Intake{
 		public static final int intake_left = 16;
 		public static final int intake_right = 17;
-		public static final double left_speed = .25; //VERIFY
-		public static final double right_speed = -.25; //VERIFY
+		public static final double left_intake_speed = -.25; //VERIFY
+		public static final double right_intake_speed = .25; //VERIFY
+		public static final double left_outake_speed = .25; //VERIFY
+		public static final double right_outake_speed = -.25; //VERIFY
 	}
 
 	public static class Arm{

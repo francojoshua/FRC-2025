@@ -22,9 +22,14 @@ public class IntakeSubsystem extends SubsystemBase {
 
   }
 
-  public void set_speed(){
-    left.set(Intake.left_speed);
-    right.set(Intake.right_speed);
+  public void set_intake(){
+    left.set(Intake.left_intake_speed);
+    right.set(Intake.right_intake_speed);
+  }
+
+  public void set_outake(){
+    left.set(Intake.left_outake_speed);
+    right.set(Intake.right_outake_speed);
   }
 
   public void stop(){

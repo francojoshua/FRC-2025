@@ -45,7 +45,7 @@ public class RobotContainer {
 	private final IntakeSubsystem intakeSubsystem = new IntakeSubsystem();
 	private final ArmSubsystem armSubsystem = new ArmSubsystem();
 	private final SwerveSubsystem swerveSubsystem = new SwerveSubsystem();
-	private final ElevatorSubsystem elevatorSubsytem = new ElevatorSubsystem();
+	//private final ElevatorSubsystem elevatorSubsytem = new ElevatorSubsystem();
 	// Replace with CommandPS4Controller or CommandJoystick if needed
 	private final CommandXboxController controller =
 			new CommandXboxController(OperatorConstants.kDriverControllerPort);
@@ -65,7 +65,7 @@ public class RobotContainer {
 						() -> controller.getLeftX(), () -> controller.getRightX(), () -> joystick.getRawButton(ControllerConstants.LY_ID))
 		);
 
-		elevatorSubsytem.setDefaultCommand(new ElevatorCommand(elevatorSubsytem));
+		//elevatorSubsytem.setDefaultCommand(new ElevatorCommand(elevatorSubsytem));
 
 		
 		configureBindings();
@@ -91,12 +91,12 @@ public class RobotContainer {
 		controller.rightBumper().onTrue(Commands.runOnce(swerveSubsystem::toggleSlowMode));
 		controller.leftTrigger().whileTrue(new IntakeCommand(intakeSubsystem));
 		controller.rightTrigger().whileTrue(new ArmCommand(armSubsystem));
-		controller.a().onTrue(elevatorSubsytem.change_setpoint(Elevator.level_1));
-		controller.b().onTrue(elevatorSubsytem.change_setpoint(Elevator.level_2));
-		controller.y().onTrue(elevatorSubsytem.change_setpoint(Elevator.level_3));
-		controller.leftBumper().onTrue(elevatorSubsytem.change_setpoint(Elevator.height_minmum));
-		controller.povDown().onTrue(elevatorSubsytem.decrement_setpoint());
-		controller.povUp().onTrue(elevatorSubsytem.increment_setpoint());
+		//controller.a().onTrue(new InstantCommand( ()-> elevatorSubsytem.change_setpoint(Elevator.level_1)));
+		//controller.b().onTrue(new InstantCommand( ()-> elevatorSubsytem.change_setpoint(Elevator.level_2)));
+		//controller.y().onTrue(new InstantCommand( ()-> elevatorSubsytem.change_setpoint(Elevator.level_3)));
+		//controller.leftBumper().onTrue(new InstantCommand( ()-> elevatorSubsytem.change_setpoint(Elevator.height_minmum)));
+		//controller.povDown().onTrue(Commands.runOnce(elevatorSubsytem::decrement_setpoint));
+		//controller.povUp().onTrue(Commands.runOnce(elevatorSubsytem::increment_setpoint));
 
 
 		// Schedule `exampleMethodCommand` when the Xbox controller's B button is pressed,

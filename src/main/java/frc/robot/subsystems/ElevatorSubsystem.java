@@ -44,11 +44,11 @@ public class ElevatorSubsystem extends SubsystemBase {
     controller.setReference(this.setpoint,ControlType.kPosition,null,Elevator.KF);
   }
 
-  public Command change_setpoint(double setpoint){
-    return Commands.runOnce(()->this.setpoint = setpoint);
+  public void change_setpoint(double setpoint){
+    this.setpoint = setpoint;
   }
 
-  public Command increment_setpoint(){
+  public void increment_setpoint(){
     temp = this.setpoint;
     temp += Elevator.increment_decrement;
 
@@ -56,18 +56,19 @@ public class ElevatorSubsystem extends SubsystemBase {
         temp = Elevator.height_maximum;
     } 
 
-    return Commands.runOnce(()->this.setpoint = temp);
+    this.setpoint = temp;
   }
   
-  public Command decrement_setpoint(){
+  public void decrement_setpoint(){
     temp = this.setpoint;
     temp -= Elevator.increment_decrement;
+
 
     if(temp < Elevator.height_minmum){
         temp = Elevator.height_minmum;
     } 
 
-    return Commands.runOnce(()->this.setpoint = temp);
+    this.setpoint = temp;
   }
 
   public double get_positon(){

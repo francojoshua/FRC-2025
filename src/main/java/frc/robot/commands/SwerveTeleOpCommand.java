@@ -7,6 +7,7 @@ import frc.robot.subsystems.SwerveSubsystem;
 
 import java.util.function.Supplier;
 import edu.wpi.first.math.filter.SlewRateLimiter;
+import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.math.kinematics.ChassisSpeeds;
 import edu.wpi.first.math.kinematics.SwerveModuleState;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -64,6 +65,15 @@ public class SwerveTeleOpCommand extends Command {
 			vxSpeed *= 0.10;
 			vySpeed *= 0.10;
 			rot *= 0.10;
+		}
+
+		if (vxSpeed == 0.0 & vySpeed == 0.0 & rot == 0.0) {
+            swerveSubsystem.setModuleStates(
+                    new SwerveModuleState(0.001000001, Rotation2d.fromDegrees(135)),
+                    new SwerveModuleState(0.001000001, Rotation2d.fromDegrees(-135)),
+                    new SwerveModuleState(0.001000001, Rotation2d.fromDegrees(-135)),
+                    new SwerveModuleState(0.001000001, Rotation2d.fromDegrees(135)));
+			return;
 		}
 
 		ChassisSpeeds chassisSpeeds;

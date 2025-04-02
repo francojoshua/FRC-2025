@@ -76,30 +76,30 @@ public final class Constants {
 						new Translation2d(-kWheelBase / 2, kTrackWidth / 2)); // back left
 
 		// POSITIVE Y MEANS LEFT. POSITIVE X MEANS FRONT
-		public static final int kFrontRightDriveMotorPort = 8;
-		public static final int kFrontLeftDriveMotorPort = 6;
-		public static final int kBackRightDriveMotorPort = 4;
-		public static final int kBackLeftDriveMotorPort = 2;
+		public static final int kFrontRightDriveMotorPort = 4;
+		public static final int kFrontLeftDriveMotorPort = 8;
+		public static final int kBackRightDriveMotorPort = 2;
+		public static final int kBackLeftDriveMotorPort = 6;
 
-		public static final int kFrontRightAngleMotorPort = 7;
-		public static final int kFrontLeftAngleMotorPort = 5;
-		public static final int kBackRightAngleMotorPort = 3;
-		public static final int kBackLeftAngleMotorPort = 1;
+		public static final int kFrontRightAngleMotorPort = 3;
+		public static final int kFrontLeftAngleMotorPort = 7;
+		public static final int kBackRightAngleMotorPort = 1;
+		public static final int kBackLeftAngleMotorPort = 5;
 
 		public static final boolean kInverseFrontRightAngleEncoder = true;
 		public static final boolean kInverseFrontLeftAngleEncoder = true;
 		public static final boolean kInverseBackRightAngleEncoder = true;
 		public static final boolean kInverseBackLeftAngleEncoder = true;
 
-		public static final boolean kInverseFrontRightDriveEncoder = true; // GOOD
-		public static final boolean kInverseFrontLeftDriveEncoder = false; // GOOD
-		public static final boolean kInverseBackRightDriveEncoder = true; // GOOD
-		public static final boolean kInverseBackLeftDriveEncoder = false; // GOOD
+		public static final boolean kInverseFrontRightDriveEncoder = true; // 8 is true // GOOD
+		public static final boolean kInverseFrontLeftDriveEncoder = true; // 6 is false GOOD
+		public static final boolean kInverseBackRightDriveEncoder = false; // 4 is true GOOD
+		public static final boolean kInverseBackLeftDriveEncoder = false; // 2 is false GOOD
 
-		public static final int kFrontRightDriveAbsoluteEncoderPort = 12;
-		public static final int kFrontLeftDriveAbsoluteEncoderPort = 9;
-		public static final int kBackRightDriveAbsoluteEncoderPort = 11;
-		public static final int kBackLeftDriveAbsoluteEncoderPort = 10;
+		public static final int kFrontRightDriveAbsoluteEncoderPort = 11; // 12
+		public static final int kFrontLeftDriveAbsoluteEncoderPort = 12; // 9
+		public static final int kBackRightDriveAbsoluteEncoderPort = 10; // 11
+		public static final int kBackLeftDriveAbsoluteEncoderPort = 9; //10
 
 		public static final boolean kInverseFrontRightDriveAbsoluteEncoder = false;
 		public static final boolean kInverseFrontLeftDriveAbsoluteEncoder = false;

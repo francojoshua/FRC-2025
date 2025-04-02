@@ -124,7 +124,7 @@ public class SwerveSubsystem extends SubsystemBase {
 	}
 
 
-	public void setModuleStates(SwerveModuleState[] desiredStates) {
+	public void setModuleStates(SwerveModuleState... desiredStates) {
 		SwerveDriveKinematics.desaturateWheelSpeeds(desiredStates,
 				DriveConstants.kMaxSpeedMetersPerSecond);
 		frontRight.setDesiredState(desiredStates[0], isSlowModeEnabled);

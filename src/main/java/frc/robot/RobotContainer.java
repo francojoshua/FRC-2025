@@ -4,6 +4,10 @@
 
 package frc.robot;
 
+
+
+
+
 import frc.robot.Constants.ArmConstants;
 import frc.robot.Constants.ControllerConstants;
 import frc.robot.Constants.OperatorConstants;
@@ -13,7 +17,9 @@ import com.pathplanner.lib.auto.AutoBuilder;
 import com.pathplanner.lib.auto.NamedCommands;
 import com.pathplanner.lib.commands.PathPlannerAuto;
 import com.pathplanner.lib.path.PathPlannerPath;
-
+import edu.wpi.first.cscore.UsbCamera;
+import edu.wpi.first.cscore.VideoSource.ConnectionStrategy;
+import edu.wpi.first.math.kinematics.ChassisSpeeds;
 import edu.wpi.first.cameraserver.CameraServer;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
@@ -21,6 +27,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.Commands;
 import edu.wpi.first.wpilibj2.command.InstantCommand;
+import edu.wpi.first.wpilibj2.command.RunCommand;
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 import edu.wpi.first.wpilibj2.command.WaitCommand;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
@@ -49,7 +56,6 @@ public class RobotContainer {
 		swerveSubsystem.setDefaultCommand(
 				new SwerveTeleOpCommand(swerveSubsystem, () -> controller.getLeftY(),
 						() -> controller.getLeftX(), () -> controller.getRightX(), () -> joystick.getRawButton(ControllerConstants.LY_ID)));
-
 
 		
 		configureBindings();
@@ -80,11 +86,20 @@ public class RobotContainer {
 		// cancelling on release.
 		// m_driverController.b().whileTrue(m_exampleSubsystem.exampleMethodCommand());
 	}
-
-	private void configureAuto() {
-
+	public Command createMoveForwardAuto() {
+		return new SequentialCommandGroup(
+			new RunCommand(() -> swerveSubsystem.driveRobotRelative(
+				new ChassisSpeeds(0.0,-1.0, 0.0)), swerveSubsystem)
+				.withTimeout(0.75), // Move forward for 2 seconds
+			new InstantCommand(swerveSubsystem::stopModules, swerveSubsystem) // Stop the robot
+			);
 	}
-
+	
+	private void configureAuto() {
+		chooser.setDefaultOption("Move Forward Auto", createMoveForwardAuto());
+		SmartDashboard.putData("Auto Mode", chooser);
+	}
+	
 	/**
 	 * Use this to pass the autonomous command to the main {@link Robot} class.
 	 *

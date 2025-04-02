@@ -69,11 +69,12 @@ public final class Constants {
 		public static final double kWheelBase = Units.inchesToMeters(28);
 		// Distance between front and back wheels
 		public static final SwerveDriveKinematics kDriveKinematics =
-				new SwerveDriveKinematics(new Translation2d(kWheelBase / 2, -kTrackWidth / 2), // front
-																								// right
-						new Translation2d(kWheelBase / 2, kTrackWidth / 2), // front left
-						new Translation2d(-kWheelBase / 2, -kTrackWidth / 2), // back right
-						new Translation2d(-kWheelBase / 2, kTrackWidth / 2)); // back left
+        new SwerveDriveKinematics(
+                new Translation2d(kWheelBase / 2, kTrackWidth / 2),  // front right
+                new Translation2d(-kWheelBase / 2, kTrackWidth / 2), // front left
+                new Translation2d(kWheelBase / 2, -kTrackWidth / 2), // back right
+                new Translation2d(-kWheelBase / 2, -kTrackWidth / 2) // back left
+        );
 
 		// POSITIVE Y MEANS LEFT. POSITIVE X MEANS FRONT
 		public static final int kFrontRightDriveMotorPort = 4;

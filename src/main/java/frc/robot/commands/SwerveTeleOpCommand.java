@@ -69,10 +69,10 @@ public class SwerveTeleOpCommand extends Command {
 
 		if (vxSpeed == 0.0 & vySpeed == 0.0 & rot == 0.0) {
             swerveSubsystem.setModuleStates(
-                    new SwerveModuleState(0.001000001, Rotation2d.fromDegrees(135)),
-                    new SwerveModuleState(0.001000001, Rotation2d.fromDegrees(-135)),
-                    new SwerveModuleState(0.001000001, Rotation2d.fromDegrees(-135)),
-                    new SwerveModuleState(0.001000001, Rotation2d.fromDegrees(135)));
+                    new SwerveModuleState(0.001000001, Rotation2d.fromDegrees(45)),
+                    new SwerveModuleState(0.001000001, Rotation2d.fromDegrees(-45)),
+                    new SwerveModuleState(0.001000001, Rotation2d.fromDegrees(-45)),
+                    new SwerveModuleState(0.001000001, Rotation2d.fromDegrees(45)));
 			return;
 		}
 
